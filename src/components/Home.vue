@@ -57,10 +57,8 @@ export default {
         .then(response => {
           this.authName = response.data
           this.authPassword = response.data
-          console.log('Hello World')
           console.log(this.authName)
           console.log(this.authPassword)
-          console.log('I want to die')
         })
         .catch(error => {
           this.errors.push(error)

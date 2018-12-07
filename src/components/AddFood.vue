@@ -11,7 +11,7 @@
       <input class="form__input" v-model.trim="fooditem" placeholder="Name of Food"/>
     </div>
     <p>
-      <button class="btn btn-primary btn1" type="submit" :disabled="submitStatus === 'PENDING'">Add Food</button>
+      <button id="addbtn" class="ui button" type="submit" :disabled="submitStatus === 'PENDING'">Add</button>
     </p>
     <p class="typo__p" v-if="submitStatus === 'OK'">Posted!</p>
     <p class="typo__p" v-if="submitStatus === 'ERROR'">Please Fill in the Form Correctly.</p>
@@ -43,6 +43,7 @@ export default {
     return {
       coursedinner: 'Course',
       fooditem: '',
+      props: ['_id'],
       submitStatus: null
     }
   },
@@ -87,65 +88,29 @@ export default {
 </script>
 
 <style scoped>
-  #app1 {
-    width: 95%;
-    margin: 0 auto;
-  }
-  .required-field > label::after {
-    content: '*';
-    color: red;
-    margin-left: 0.25rem;
-  }
-  .donate-form .form-control-label.text-left{
-    text-align: left;
-  }
-
-  label {
-    display: inline-block;
-    text-align: left;
-    font-size: x-large;
-  }
-  .typo__p {
-    width: 540px;
-    font-size: x-large;
-  }
-  .btn1 {
-    width: 300px;
-    font-size: x-large;
-  }
   p {
     margin-top: 20px;
   }
 
-  .addfood {
-    background-color: beige;
-  }
-
   input {
     border: 1px solid silver;
-    border-radius: 4px;
+    border-radius: 20px;
     background: white;
     padding: 5px 10px;
     width: 540px;
   }
 
-  .dirty {
-    border-color: #5A5;
-    background: #EFE;
+  #coursedinner{
+    margin-top: 20px;
+    margin-bottom: 20px;
   }
 
-  .dirty:focus {
-    outline-color: #8E8;
-  }
-
-  .error {
-    border-color: red;
+  #addbtn{
+    width: 300px;
+    font-size: x-large;
     background: #157ffb;
     color: whitesmoke;
-  }
-
-  .error:focus {
-    outline-color: #ffa519;
+    font-family: "Calibri";
   }
 
   .form-group {

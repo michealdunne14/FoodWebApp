@@ -14,5 +14,20 @@ export default {
   putUpvote (food) {
     return Api().put('/foodList/:id/upvote', food,
       { headers: {'Content-type': 'application/json'} })
+  },
+  upvoteFood (id) {
+    return Api().put(`/foodList/${id}/upvote`)
+  },
+  deleteFood (id) {
+    return Api().delete(`/foodList/${id}`)
+  },
+  fetchFoodByOne (id) {
+    return Api().get(`/donations/${id}`)
+  },
+  putFood (id, donation) {
+    console.log('REQUESTING ' + donation._id + ' ' +
+      JSON.stringify(donation, null, 5))
+    return Api().put(`/donations/${id}`, donation,
+      { headers: {'Content-type': 'application/json'} })
   }
 }
