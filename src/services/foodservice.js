@@ -19,7 +19,7 @@ export default {
     return Api().put(`/foodList/${id}/upvote`)
   },
   deleteFood (id) {
-    return Api().delete(`/foodList/${id}`)
+    return Api().delete(`/foodList/Id/${id}`)
   },
   fetchFoodByOne (id) {
     return Api().get(`/donations/${id}`)

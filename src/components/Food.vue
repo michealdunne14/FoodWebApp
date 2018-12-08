@@ -3,7 +3,7 @@
     <v-client-table :columns="columns" :data="food" :options="options">
       <a slot="upvote" slot-scope="props" class="fa fa-thumbs-up fa-2x" @click="upvote(props.row._id)"></a>
       <a slot="remove" slot-scope="props" class="fa fa-trash-o fa-2x" @click="deleteFood(props.row._id)"></a>
-      <a slot="edit" slot-scope="props" class="fa fa-edit fa-2x" @click="editDonation(props.row._id)"></a>
+      <a slot="edit" slot-scope="props" class="fa fa-edit fa-2x" @click="editFood(props.row._id)"></a>
     </v-client-table>
   </div>
 </template>
@@ -55,6 +55,7 @@ export default {
       FoodService.upvoteFood(id)
         .then(response => {
           console.log(response)
+          this.loadFood()
         })
         .catch(error => {
           this.errors.push(error)
@@ -63,25 +64,23 @@ export default {
     },
     deleteFood: function (id) {
       this.$swal({
-        title: 'Are you totaly sure?',
+        title: 'Are you sure you want to delete this',
         text: 'You can\'t Undo this action',
         type: 'warning',
         showCancelButton: true,
-        confirmButtonText: 'OK Delete it',
+        confirmButtonText: 'Ok Delete it',
         cancelButtonText: 'Cancel',
         showCloseButton: true,
         showLoaderOnConfirm: true
-      }).then((result) => {
-        console.log('SWAL Result : ' + result)
-        if (result.value === true) {
+      }).then(result => {
+        console.log('SWAL:' + result)
+        if (result === true) {
           FoodService.deleteFood(id)
             .then(response => {
-              // JSON responses are automatically parsed.
               this.message = response.data
               console.log(this.message)
               this.loadFood()
-              // Vue.nextTick(() => this.$refs.vuetable.refresh())
-              this.$swal('Deleted', 'You successfully deleted this Donation ' + JSON.stringify(response.data, null, 5), 'success')
+              this.$swal('Deleted', 'You successfully deleted this Donation' + JSON.stringify(response.data, null, 5), 'success')
             })
             .catch(error => {
               this.$swal('ERROR', 'Something went wrong trying to Delete ' + error, 'error')

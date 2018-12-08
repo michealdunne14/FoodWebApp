@@ -43,7 +43,7 @@ export default {
     return {
       coursedinner: 'Course',
       fooditem: '',
-      props: ['_id'],
+      props: ['donationBtnTitle'],
       submitStatus: null
     }
   },
@@ -68,7 +68,7 @@ export default {
             fooditem: this.fooditem
           }
           this.food = food
-          this.submitFood(this.food)
+          this.$emit('donation-is-created-updated', this.donation)
         }, 500)
       }
     },
@@ -99,6 +99,11 @@ export default {
     padding: 5px 10px;
     width: 540px;
   }
+  .form-group {
+    width: 550px;
+    margin:auto;
+    border-radius:6px;
+  }
 
   #coursedinner{
     margin-top: 20px;
@@ -111,11 +116,5 @@ export default {
     background: #157ffb;
     color: whitesmoke;
     font-family: "Calibri";
-  }
-
-  .form-group {
-    width: 550px;
-    margin:auto;
-    border-radius:6px;
   }
 </style>
