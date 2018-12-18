@@ -24,10 +24,10 @@ export default {
   fetchFoodByOne (id) {
     return Api().get(`/donations/${id}`)
   },
-  putFood (id, donation) {
-    console.log('REQUESTING ' + donation._id + ' ' +
-      JSON.stringify(donation, null, 5))
-    return Api().put(`/donations/${id}`, donation,
+  putFood (id, food) {
+    console.log('REQUESTING ' + food._id + ' ' +
+      JSON.stringify(food, null, 5))
+    return Api().put(`/foodList/${id}`, food,
       { headers: {'Content-type': 'application/json'} })
   }
 }

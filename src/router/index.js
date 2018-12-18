@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Food from '@/components/Food'
 import AddFood from '@/components/AddFood'
+import Edit from '@/components/Edit'
+import Map from '@/components/Map'
 
 Vue.use(Router)
 
@@ -22,6 +24,17 @@ export default new Router({
       path: '/addfood',
       name: 'AddFood',
       component: AddFood
+    },
+    {
+      path: '/map',
+      name: 'Map',
+      component: Map
+    },
+    {
+      path: '/edit',
+      name: 'Edit',
+      component: Edit,
+      props: true
     }
   ]
 })

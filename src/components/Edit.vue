@@ -4,8 +4,10 @@
     <div class="container mt-3 mt-sm-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <food-form :food="fooditem" donationBtnTitle="Add Food"
-                         @food-is-created-updated="submitFood"></food-form>
+          <template v-if="childDataLoaded">
+          <food-form :food="fooditem" donationBtnTitle="Update Food"
+                         @food-is-created-updated="updateFood"></food-form>
+          </template>
         </div><!-- /col -->
       </div><!-- /row -->
     </div><!-- /container -->
@@ -18,7 +20,6 @@ import VueForm from 'vueform'
 import Vuelidate from 'vuelidate'
 import VueSweetalert from 'vue-sweetalert'
 import foodservice from '@/services/foodservice'
-import {required} from 'vuelidate/lib/validators'
 import FoodForm from '@/components/FoodForm'
 
 Vue.use(VueForm, {
@@ -32,26 +33,39 @@ Vue.use(Vuelidate)
 Vue.use(VueSweetalert)
 
 export default {
-  name: 'Add Food',
+  name: 'Update Food',
   data () {
     return {
-      fooditem: {coursedinner: 'Course', fooditem: '', description: '', image: ''},
-      messagetitle: 'Add Food'
-    }
-  },
-  validations: {
-    fooditem: {
-      required
+      fooditem: {},
+      childDataLoaded: false,
+      temp: {},
+      messagetitle: 'Update Food'
     }
   },
   components: {
     'food-form': FoodForm
   },
+  created () {
+    this.getFood()
+  },
   methods: {
-    submitFood: function (food) {
-      foodservice.postFood(food)
+    getFood: function () {
+      foodservice.fetchFood(this.$router.params)
         .then(response => {
-          // JSON responses are automatically parsed.
+          this.temp = response.data
+          this.fooditem = this.temp[0]
+          this.childDataLoaded = true
+          console.log('Getting Donation in Edit: ' + JSON.stringify(this.fooditem, null, 5))
+        })
+        .catch(error => {
+          this.errors.push(error)
+          console.log(error)
+        })
+    },
+    updateFood: function (food) {
+      console.log('Before PUT ' + JSON.stringify(food, null, 5))
+      foodservice.putFood(this.$router.params, food)
+        .then(response => {
           console.log(response)
         })
         .catch(error => {
