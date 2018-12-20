@@ -1,19 +1,16 @@
 <template>
   <div id="app1">
     <v-client-table id="dropdown-content" :columns="columns" :data="food" :options="options">
-      <i slot="content" slot-scope="props"  class="archive icon" @click="popup=true & fooddesc(props.row._id)"></i>
-      <i slot="upvote" slot-scope="props"  class="thumbs up icon" @click="upvote(props.row._id) & random({title:'Like',text:'You Liked a Post'})"></i>
+      <i slot="content" slot-scope="props"  class="archive icon" @click="fooddesc(props.row._id)"></i>
+      <i slot="upvote" slot-scope="props"  class="thumbs up icon" @click="upvote(props.row._id) & random({title:'{{option}}',text:'{{content}}'})"></i>
       <i slot="remove" slot-scope="props" class="trash icon" @click="deleteFood(props.row._id)"></i>
       <i slot="edit" slot-scope="props" class="edit icon" @click="editFood(props.row._id)"></i>
     </v-client-table>
       <div class="centerx">
-        <vs-popup  title="Content" :active.sync="popup">
-            <p id="paragraph">
-            </p>
-          <img src="https://images.idgesg.net/images/article/2018/03/sky-3213435_1280-100752061-large.jpg" style="width:550px;height:400px">
+        <vs-popup  title="Content" :active.sync="popup" >
+          <card v-bind:fooditem="fooditem" v-bind:des="des" v-bind:image="image" @click="submitFood"></card>
         </vs-popup>
       </div>
-    {{des}}
   </div>
 </template>
 
@@ -22,9 +19,6 @@ import FoodService from '@/services/foodservice'
 import Vue from 'vue'
 import VueTables from 'vue-tables-2'
 import Card from '@/components/Card'
-import Vuesax from 'vuesax'
-import 'vuesax/dist/vuesax.css'
-Vue.use(Vuesax)
 
 Vue.use(VueTables.ClientTable, {compileTemplates: true, filterByColumn: true})
 export default {
@@ -34,10 +28,12 @@ export default {
       messagetitle: ' Food List ',
       food: [],
       des: '',
+      fooditem: '',
+      image: '',
       popup: false,
-      props: ['_id'],
       option: null,
       content: null,
+      props: ['_id'],
       errors: [],
       columns: ['coursedinner', 'fooditem', 'upvotes', 'downvotes', 'content', 'upvote', 'remove', 'edit'],
       options: {
@@ -130,10 +126,18 @@ export default {
       })
     },
     fooddesc: function (id) {
-
+      for (var i = 0; i < this.food.length; i++) {
+        if (this.food[i]._id === id) {
+          this.popup = true
+          this.des = this.food[i].description
+          this.fooditem = this.food[i].fooditem
+          this.image = this.food[i].image
+        }
+      }
     }
   }
 }
+
 </script>
 
 <style scoped>
@@ -146,6 +150,7 @@ export default {
   #app1 {
     width: 60%;
     margin: 0 auto;
+    background-color: white;
   }
 
   #image {

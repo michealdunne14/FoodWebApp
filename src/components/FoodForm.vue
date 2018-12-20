@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit">
+  <form id="foodform" @submit.prevent="submit">
     <div class="form-group">
       <select id="coursedinner" name="coursedinner" class="form-control" type="text"  placeholder="Course" v-model="coursedinner">
         <option value="Starter">Starter</option>
@@ -8,18 +8,17 @@
       </select>
     </div>
     <div class="form-group" :class="{ 'form-group--error': $v.fooditem.$error }">
-      <vs-input label-placeholder="Name of Food" v-model.trim="fooditem"/>
+      <vs-input id="foodbox" label-placeholder="Name of Food" v-model.trim="fooditem"/>
       <div>
       <vs-textarea color="blue" label="Description" v-model="description" />
       </div>
     </div>
-    <vs-upload v-model.trim="image" />
+    <div id="file-upload">
+      <input id="upload" class="file-upload__input" type="file" >
+    </div>
     <p>
-      <button id="addbtn" class="ui button" type="submit" :disabled="submitStatus === 'PENDING'">Add</button>
+      <vs-button color="blue"  type="filled" class="ui button" @click="random({title:'{{option}}',text:'{{content}}'})">Add</vs-button>
     </p>
-    <p class="typo__p" v-if="submitStatus === 'OK'">Posted!</p>
-    <p class="typo__p" v-if="submitStatus === 'ERROR'">Please Fill in the Form Correctly.</p>
-    <p class="typo__p" v-if="submitStatus === 'PENDING'">Posting...</p>
   </form>
 </template>
 
@@ -39,14 +38,14 @@ Vue.use(VueForm, {
 Vue.use(Vuelidate)
 
 export default {
-  name: 'Donate',
-  props: ['donationBtnTitle'],
   data () {
     return {
       coursedinner: 'Course',
       fooditem: '',
       description: '',
       image: '',
+      option: null,
+      content: null,
       submitStatus: null
     }
   },
@@ -60,12 +59,15 @@ export default {
       console.log('submit!')
       this.$v.$touch()
       if (this.$v.$invalid) {
-        this.submitStatus = 'ERROR'
+        this.option = 'Error'
+        this.content = 'Something went wrong'
       } else {
         // do your submit logic here
-        this.submitStatus = 'PENDING'
+        this.option = 'Pending'
+        this.content = 'We are working on it'
         setTimeout(() => {
-          this.submitStatus = 'OK'
+          this.option = 'Success'
+          this.content = 'You Posted New Food'
           var food = {
             coursedinner: this.coursedinner,
             fooditem: this.fooditem,
@@ -73,21 +75,25 @@ export default {
             image: this.image
           }
           this.food = food
-          console.log('Submitting in DonationForm : ' +
+          console.log('Submitting in FormForm : ' +
             JSON.stringify(this.food, null, 5))
           this.$emit('food-is-created-updated', this.food)
         }, 500)
       }
+    },
+    random () {
+      let color = `rgb(${255},${0},${0})`
+      this.$vs.notify({
+        title: this.option,
+        text: this.content,
+        color: color
+      })
     }
   }
 }
 </script>
 
 <style scoped>
-  #app1 {
-    width: 95%;
-    margin: 0 auto;
-  }
   .required-field > label::after {
     content: '*';
     color: red;
@@ -111,10 +117,6 @@ export default {
     width: 540px;
     font-size: x-large;
   }
-  .btn1 {
-    width: 300px;
-    font-size: x-large;
-  }
   p {
     margin-top: 20px;
   }
@@ -126,55 +128,17 @@ export default {
     padding: 5px 10px;
     width: 540px;
   }
-  #app {
-    text-align: center;
-  }
-  img {
-    width: 30%;
-    margin: auto;
-    display: block;
-    margin-bottom: 10px;
-  }
-  button {
-
+  #upload {
+    margin-right: 50px;
   }
 
-  #foodname {
-    border-radius: 50px;
-  }
-  #text {
-    border-radius: 50px;
-    columns: 50px;
-    padding-bottom: 50px;
-  }
+  #file-upload {
 
+  }
   #coursedinner {
     border-radius: 50px;
   }
-
-  #image {
-    border-radius: 50px;
-  }
-
-  .dirty {
-    border-color: #5A5;
-    background: #EFE;
-  }
-
-  .dirty:focus {
-    outline-color: #8E8;
-  }
-
-  .error {
-    border-color: red;
-    background: #157ffb;
-    color: whitesmoke;
-  }
-
-  .error:focus {
-    outline-color: #ffa519;
-  }
-  #description{
-    background: white;
+  #foodbox {
+    margin-bottom: 25px;
   }
 </style>

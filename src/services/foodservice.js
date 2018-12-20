@@ -11,8 +11,12 @@ export default {
     return Api().post('/foodList', food,
       { headers: {'Content-type': 'application/json'} })
   },
-  putUpvote (food) {
-    return Api().put('/foodList/:id/upvote', food,
+  postUser (user) {
+    return Api().post('/user', user,
+      { headers: {'Content-type': 'application/json'} })
+  },
+  getLoginUser (user) {
+    return Api().post('/user/login', user,
       { headers: {'Content-type': 'application/json'} })
   },
   upvoteFood (id) {

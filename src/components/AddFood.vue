@@ -4,7 +4,7 @@
     <div class="container mt-3 mt-sm-5">
       <div class="row justify-content-center">
         <div class="col-md-6">
-          <food-form :food="fooditem" donationBtnTitle="Add Food"
+          <food-form :food="fooditem" foodBtnTitle="Add Food"
                          @food-is-created-updated="submitFood"></food-form>
         </div><!-- /col -->
       </div><!-- /row -->
@@ -84,6 +84,9 @@ export default {
   #coursedinner{
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+  #app1 {
+    background-color: white;
   }
 
   #addbtn{

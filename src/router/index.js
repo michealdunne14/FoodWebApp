@@ -5,6 +5,7 @@ import Food from '@/components/Food'
 import AddFood from '@/components/AddFood'
 import Edit from '@/components/Edit'
 import Map from '@/components/Map'
+import Info from '@/components/Info'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       name: 'Edit',
       component: Edit,
       props: true
+    },
+    {
+      path: '/info',
+      name: 'Info',
+      component: Info
     }
   ]
 })
