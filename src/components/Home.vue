@@ -13,6 +13,7 @@
 
 export default {
   name: 'User',
+  // Data for user
   data () {
     return {
     }

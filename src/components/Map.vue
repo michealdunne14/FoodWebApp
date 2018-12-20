@@ -23,6 +23,7 @@ export default {
   name: 'Map',
   data () {
     return {
+      // Message Title
       messagetitle: 'Map'
     }
   }

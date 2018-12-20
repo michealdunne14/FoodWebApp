@@ -23,6 +23,7 @@ import Card from '@/components/Card'
 Vue.use(VueTables.ClientTable, {compileTemplates: true, filterByColumn: true})
 export default {
   name: 'Food',
+  // Data
   data () {
     return {
       messagetitle: ' Food List ',
@@ -48,13 +49,17 @@ export default {
       }
     }
   },
+  // Run on start
   created () {
     this.loadFood()
   },
+  // Components used
   components: {
     'card': Card
   },
+  // Methods Used
   methods: {
+    // Gets the color for the Notification
     random () {
       let color = `rgb(${255},${0},${0})`
       this.$vs.notify({
@@ -63,6 +68,7 @@ export default {
         color: color
       })
     },
+    // Load in the food in to the tables
     loadFood: function () {
       FoodService.fetchFood()
         .then(response => {
@@ -75,12 +81,16 @@ export default {
           console.log(error)
         })
     },
+    // Upvote for food
     upvote: function (id) {
+      // Sets the string for notification
       this.option = 'Like'
       this.content = 'You Liked a Post'
+      // Gets upvote from backend
       FoodService.upvoteFood(id)
         .then(response => {
           console.log(response)
+          // Loads the food back in
           this.loadFood()
         })
         .catch(error => {
@@ -88,13 +98,16 @@ export default {
           console.log(error)
         })
     },
+    // Edit the food values
     editFood: function (id) {
       this.$router.params = id
       this.$router.push('edit')
       this.loadFood()
     },
+    // Deletes the food from the database
     deleteFood: function (id) {
       this.$swal({
+        // Sweet Alert Values
         title: 'Are you totaly sure?',
         text: 'You can\'t Undo this action',
         type: 'warning',
@@ -106,13 +119,13 @@ export default {
       }).then((result) => {
         console.log('SWAL Result : ' + result)
         if (result === true) {
+          // Delete the food from backend
           FoodService.deleteFood(id)
             .then(response => {
               // JSON responses are automatically parsed.
               this.message = response.data
               console.log(this.message)
               this.loadFood()
-              // Vue.nextTick(() => this.$refs.vuetable.refresh())
               this.$swal('Deleted', 'You successfully deleted this Donation ' + JSON.stringify(response.data, null, 5), 'success')
             })
             .catch(error => {
@@ -125,6 +138,7 @@ export default {
         }
       })
     },
+    // Sets the values for the card
     fooddesc: function (id) {
       for (var i = 0; i < this.food.length; i++) {
         if (this.food[i]._id === id) {
@@ -142,24 +156,9 @@ export default {
 </script>
 
 <style scoped>
-  .vue-title {
-    margin-top: 30px;
-    text-align: center;
-    font-size: 45pt;
-    margin-bottom: 10px;
-  }
   #app1 {
     width: 60%;
     margin: 0 auto;
     background-color: white;
   }
-
-  #image {
-    width: 500px;
-  }
-
-  #paragraph {
-    font-size: large;
-  }
-
 </style>

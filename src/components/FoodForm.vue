@@ -38,6 +38,7 @@ Vue.use(VueForm, {
 Vue.use(Vuelidate)
 
 export default {
+  // data
   data () {
     return {
       coursedinner: 'Course',
@@ -49,25 +50,33 @@ export default {
       submitStatus: null
     }
   },
+  // Required
   validations: {
     fooditem: {
       required
     }
   },
+  // Methods
   methods: {
+    // Submit a food item to the database
     submit () {
       console.log('submit!')
       this.$v.$touch()
+      // Invalid value
       if (this.$v.$invalid) {
+        // Sets the notification if there is something wrong
         this.option = 'Error'
         this.content = 'Something went wrong'
       } else {
-        // do your submit logic here
+        // Sets the notification if it is pending
         this.option = 'Pending'
         this.content = 'We are working on it'
+        // Successfully submitting food to be sent to backend
         setTimeout(() => {
+          // Sets the notification if successful
           this.option = 'Success'
           this.content = 'You Posted New Food'
+          // Values to be set
           var food = {
             coursedinner: this.coursedinner,
             fooditem: this.fooditem,
@@ -81,6 +90,7 @@ export default {
         }, 500)
       }
     },
+    // sets the color of the notification
     random () {
       let color = `rgb(${255},${0},${0})`
       this.$vs.notify({
@@ -99,10 +109,6 @@ export default {
     color: red;
     margin-left: 0.25rem;
   }
-  .donate-form .form-control-label.text-left{
-    text-align: left;
-  }
-
   description {
     padding-top: 50px;
   }
@@ -111,10 +117,6 @@ export default {
     display: inline-block;
     width: 540px;
     text-align: left;
-    font-size: x-large;
-  }
-  .typo__p {
-    width: 540px;
     font-size: x-large;
   }
   p {

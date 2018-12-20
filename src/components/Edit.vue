@@ -8,9 +8,9 @@
           <food-form :food="fooditem" donationBtnTitle="Update Food"
                          @food-is-created-updated="updateFood"></food-form>
           </template>
-        </div><!-- /col -->
-      </div><!-- /row -->
-    </div><!-- /container -->
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -49,6 +49,7 @@ export default {
     this.getFood()
   },
   methods: {
+    // Get all the food
     getFood: function () {
       foodservice.fetchFood(this.$router.params)
         .then(response => {
@@ -62,6 +63,7 @@ export default {
           console.log(error)
         })
     },
+    // Update Food
     updateFood: function (food) {
       console.log('Before PUT ' + JSON.stringify(food, null, 5))
       foodservice.putFood(this.$router.params, food)
@@ -89,26 +91,8 @@ export default {
     padding: 5px 10px;
     width: 540px;
   }
-  .form-group {
-    width: 550px;
-    margin:auto;
-    border-radius:6px;
-  }
 
   #app1 {
     background-color: white;
-  }
-
-  #coursedinner{
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  #addbtn{
-    width: 300px;
-    font-size: x-large;
-    background: #157ffb;
-    color: whitesmoke;
-    font-family: "Calibri";
   }
 </style>

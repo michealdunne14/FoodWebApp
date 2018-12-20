@@ -68,6 +68,7 @@ Vue.use(VueSweetalert)
 
 export default {
   name: 'App',
+  // User data
   data () {
     return {
       user: [],
@@ -79,10 +80,12 @@ export default {
       loginStatus: null
     }
   },
+  // Created On start
   created () {
     this.loadUser()
   },
   methods: {
+    // Load in the users
     loadUser: function () {
       FoodService.fetchUser()
         .then(response => {
@@ -95,6 +98,7 @@ export default {
           console.log(error)
         })
     },
+    // Login in the users
     login () {
       console.log('submit!')
       setTimeout(() => {
@@ -106,6 +110,7 @@ export default {
         this.submitUser(user)
       }, 500)
     },
+    // submit user back to the backend
     submitUser: function (user) {
       FoodService.getLoginUser(user)
       console.log(user)
@@ -119,6 +124,7 @@ export default {
           console.log(error)
         })
     },
+    // add user to the database
     addUser () {
       setTimeout(() => {
         var user = {
@@ -129,7 +135,9 @@ export default {
         this.submitaddUser(this.user)
       }, 500)
     },
+    // Submit user to the database
     submitaddUser: function (user) {
+      // Post the user
       FoodService.postUser(user)
         .then(response => {
           // JSON responses are automatically parsed.

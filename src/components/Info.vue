@@ -27,6 +27,7 @@ Vue.use(VueSweetalert)
 
 export default {
   name: 'Information',
+  // Message title
   data () {
     return {
       messagetitle: ' Information '
@@ -47,25 +48,8 @@ export default {
     padding: 5px 10px;
     width: 540px;
   }
-  .form-group {
-    width: 550px;
-    margin:auto;
-    border-radius:6px;
-  }
-
-  #coursedinner{
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
   #app1 {
     background-color: white;
   }
 
-  #addbtn{
-    width: 300px;
-    font-size: x-large;
-    background: #157ffb;
-    color: whitesmoke;
-    font-family: "Calibri";
-  }
 </style>

@@ -26,10 +26,10 @@ Vue.use(VueForm, {
 Vue.use(Vuelidate)
 
 export default {
+  // Props
   props: ['fooditem', 'des', 'image'],
   data () {
     return {
-      submitStatus: null
     }
   }
 }
@@ -40,9 +40,6 @@ export default {
     content: '*';
     color: red;
     margin-left: 0.25rem;
-  }
-  .donate-form .form-control-label.text-left{
-    text-align: left;
   }
 
   description {
@@ -55,10 +52,6 @@ export default {
     text-align: left;
     font-size: x-large;
   }
-  .typo__p {
-    width: 540px;
-    font-size: x-large;
-  }
   p {
     margin-top: 20px;
   }
@@ -69,18 +62,5 @@ export default {
     background: white;
     padding: 5px 10px;
     width: 540px;
-  }
-  #upload {
-    margin-right: 50px;
-  }
-
-  #file-upload {
-
-  }
-  #coursedinner {
-    border-radius: 50px;
-  }
-  #foodbox {
-    margin-bottom: 25px;
   }
 </style>
