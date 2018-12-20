@@ -2,12 +2,15 @@
 
 > A Vue.js project
 Demo: https://youtu.be/8y0kz8j2aDI
+Document: [Document Link](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
 
 ![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/logo.png)
-[Document Link](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
 
 Introduction
 ------------
+For this project we had to create a vue.js front end web development project. What this app was it implemented
+
+
 For this project we created a trailer marking system where we are able to identify the location of the trailer and the contents of that trailer. To get a accurate result we used bluetooth beacons which allowed us to get an accurate result of the location. This location would we be pushed up to the cloud where it would be stored. 
 This data will be pulled down by an app that would show all of the trailers location on the map. It would allow us to filter this data by certain aspects such as by day and also by heatmap. 
 
