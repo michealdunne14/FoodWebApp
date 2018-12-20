@@ -1,12 +1,10 @@
 # webdevproject2
 
 > A Vue.js project
-# LoNet_AndroidApp
-Android App for visualisation of Trailers Mapping
-Demo: https://youtu.be/z6PlnpWShEU
+Demo: https://youtu.be/8y0kz8j2aDI
 
-![alt text](https://github.com/jongillespie/LoNet_AndroidApp/blob/master/LoNet.png)
-
+![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/logo.png)
+![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/logo.png)
 
 Introduction
 ------------
