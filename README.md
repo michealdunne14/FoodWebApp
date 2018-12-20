@@ -4,7 +4,7 @@
 Demo: https://youtu.be/8y0kz8j2aDI
 
 ![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/logo.png)
-![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
+[Document Link](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
 
 Introduction
 ------------
