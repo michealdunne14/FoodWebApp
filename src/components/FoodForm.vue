@@ -14,7 +14,7 @@
       </div>
     </div>
     <div id="file-upload">
-      <input id="upload" class="file-upload__input" type="file" >
+      <vs-input label-placeholder="Food Image URL" v-model.trim="image"/>
     </div>
     <p>
       <vs-button color="blue"  type="filled" class="ui button" @click="random({title:'{{option}}',text:'{{content}}'})">Add</vs-button>
@@ -127,13 +127,6 @@ export default {
     background: white;
     padding: 5px 10px;
     width: 540px;
-  }
-  #upload {
-    margin-right: 50px;
-  }
-
-  #file-upload {
-
   }
   #coursedinner {
     border-radius: 50px;

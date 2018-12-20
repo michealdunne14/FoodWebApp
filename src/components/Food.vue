@@ -35,7 +35,7 @@ export default {
       content: null,
       props: ['_id'],
       errors: [],
-      columns: ['coursedinner', 'fooditem', 'upvotes', 'downvotes', 'content', 'upvote', 'remove', 'edit'],
+      columns: ['coursedinner', 'fooditem', 'upvotes', 'content', 'upvote', 'remove', 'edit'],
       options: {
         filterable: ['coursedinner', 'fooditem', 'upvotes'],
         sortable: ['upvotes'],
@@ -132,6 +132,7 @@ export default {
           this.des = this.food[i].description
           this.fooditem = this.food[i].fooditem
           this.image = this.food[i].image
+          console.log(this.image)
         }
       }
     }

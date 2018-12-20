@@ -6,7 +6,7 @@
     <p id="paragraph">
       {{des}}
     </p>
-    <img src="https://images.idgesg.net/images/article/2018/03/sky-3213435_1280-100752061-large.jpg" style="width:550px;height:400px">
+    <img v-bind:src="image" style="width:550px;height:400px">
   </div>
 </template>
 
@@ -26,29 +26,11 @@ Vue.use(VueForm, {
 Vue.use(Vuelidate)
 
 export default {
-  props: ['fooditem', 'des'],
+  props: ['fooditem', 'des', 'image'],
   data () {
     return {
       submitStatus: null
     }
-  },
-  created () {
-    // this.loadFood()
-    this.fooddesc(this.food._id)
-  },
-  methods: {
-    /* loadFood: function () {
-    },
-    /*fooddesc: function (id) {
-      var find = food.fooditem
-      console.log(find)
-      for (var i = 0; i < this.food.length; i++) {
-        if (this.food[i]._id === id) {
-          this.des = this.food[i].description
-          // this.fooditem = this.food[i].fooditem
-        }
-      }
-    } */
   }
 }
 </script>

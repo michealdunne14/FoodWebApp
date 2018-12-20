@@ -7,13 +7,13 @@
       <b-navbar-brand to="/">Food App</b-navbar-brand>
       <b-collapse is-nav id="nav_collapse">
         <b-navbar-nav>
-          <b-nav-item to="/#"><i class="food home" style="padding: 5px"> Home</i></b-nav-item>
-          <b-nav-item to="/food"><i class="food list" style="padding: 5px"> Food</i></b-nav-item>
-          <b-nav-item to="/addfood"><i class="food add" style="padding: 5px"> Add Food</i></b-nav-item>
+          <b-nav-item to="/#"><i style="padding: 5px"> Home</i></b-nav-item>
+          <b-nav-item to="/food"><i style="padding: 5px"> Food</i></b-nav-item>
+          <b-nav-item to="/addfood"><i style="padding: 5px"> Add Food</i></b-nav-item>
           <b-nav-item to="/map"><i class="map" style="padding: 5px">Map</i></b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item to="/info"><i class="fa fa-comment" style="padding: 5px">Information</i></b-nav-item>
+          <b-nav-item to="/info"><i style="padding: 5px">Information</i></b-nav-item>
           <h2 to="/user"><i style="padding: 5px">{{name}}</i></h2>
           <vs-button @click="popup=true" color="blue" type="filled">Login</vs-button>
           <i class="fa fa-pied-piper-alt fa-1x" style="padding: 5px; color: white;"></i>
@@ -111,6 +111,7 @@ export default {
       console.log(user)
         .then(response => {
           console.log(response)
+          this.popup = false
           console.log(user)
         })
         .catch(error => {
@@ -122,8 +123,7 @@ export default {
       setTimeout(() => {
         var user = {
           authName: this.authName,
-          authPassword: this.authPassword,
-          popup: false
+          authPassword: this.authPassword
         }
         this.user = user
         this.submitaddUser(this.user)
@@ -133,7 +133,7 @@ export default {
       FoodService.postUser(user)
         .then(response => {
           // JSON responses are automatically parsed.
-          console.log('This is a point that i reach')
+          this.popup = false
           console.log(response)
         })
         .catch(error => {

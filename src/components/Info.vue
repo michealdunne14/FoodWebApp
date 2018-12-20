@@ -1,14 +1,11 @@
 <template>
   <div id="app1" class="hero">
     <h3 class="vue-title"><i class="fa fa-money" style="padding: 3px"></i>{{messagetitle}}</h3>
-    <div class="container mt-3 mt-sm-5">
-      <div class="row justify-content-center">
-        <div class="col-md-6">
-          <card :food="fooditem" donationBtnTitle="Add Food"
-                     @food-is-created-updated="submitFood"></card>
-        </div><!-- /col -->
-      </div><!-- /row -->
-    </div><!-- /container -->
+    <p>
+      This is an app that shows off the CRUD usage in the front end and how view this data and find places through food.
+      All the code can be found on my github along with some information.Link to GitHub: <a href="https://github.com/michealdunne14/FoodWebApp">Food Web App Link</a>
+    </p>
+    <iframe src="https://giphy.com/embed/l1L2UkgpuiE4U" width="480" height="287" frameBorder="0" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/eating-cartoon-mouse-l1L2UkgpuiE4U"></a></p>
   </div>
 </template>
 
@@ -17,9 +14,6 @@ import Vue from 'vue'
 import VueForm from 'vueform'
 import Vuelidate from 'vuelidate'
 import VueSweetalert from 'vue-sweetalert'
-import foodservice from '@/services/foodservice'
-import {required} from 'vuelidate/lib/validators'
-import Card from '@/components/Card'
 
 Vue.use(VueForm, {
   inputClasses: {
@@ -32,32 +26,10 @@ Vue.use(Vuelidate)
 Vue.use(VueSweetalert)
 
 export default {
-  name: 'Add Food',
+  name: 'Information',
   data () {
     return {
-      fooditem: {coursedinner: 'Course', fooditem: '', description: '', image: ''},
-      messagetitle: 'Add Food'
-    }
-  },
-  validations: {
-    fooditem: {
-      required
-    }
-  },
-  components: {
-    'card': Card
-  },
-  methods: {
-    submitFood: function (food) {
-      foodservice.postFood(food)
-        .then(response => {
-          // JSON responses are automatically parsed.
-          console.log(response)
-        })
-        .catch(error => {
-          this.errors.push(error)
-          console.log(error)
-        })
+      messagetitle: ' Information '
     }
   }
 }
