@@ -30,6 +30,9 @@ When the login button is pressed it will bring up a popup that allows the user t
 
 Usage
 -----
+``` bash
+# install dependencies
+npm install '''
 
 Tools
 -----
