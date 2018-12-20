@@ -28,12 +28,6 @@ Login
 -----
 When the login button is pressed it will bring up a popup that allows the user to select whether they want to login or signup. Once they user logged in it is supposed to close the popup and also input the name of the user beside the login button. The problem that I encountered was it would give me an error where it would allow me to send the data to my backend and my backend would then send the data back to my frontend this is where the error would occur and it would freeze the app and also crash Heroku. When I used my Signup feature it would allow me to add a user in to the database. It would then close the popup.   
 
-Usage
------
-``` bash
-# install dependencies
-npm install '''
-
 Tools
 -----
 - WebStorm
