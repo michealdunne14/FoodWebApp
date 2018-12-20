@@ -1,14 +1,19 @@
 # webdevproject2
 
 > A Vue.js project
-Demo: https://youtu.be/8y0kz8j2aDI
-Document: [Document Link](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
+- Demo: https://youtu.be/8y0kz8j2aDI
+- Document: [Document Link](https://github.com/michealdunne14/FoodWebApp/blob/master/Food%20Web%20app.pdf)
+- Site Launched: [Site](https://webdev-c06a8.firebaseapp.com/#/) 
 
 ![alt text](https://github.com/michealdunne14/FoodWebApp/blob/master/logo.png)
 
 Introduction
 ------------
 For this project we had to create a vue.js front end web development project. What this app was it implemented the CRUD usage and it would take in information from the backend and then use that in the front end. The purpose of the project is to create a front end for this data. 
+
+DX
+--
+
 
 Tools
 -----
